@@ -1,0 +1,16 @@
+.svg{
+    font-size: 1.2rem;
+    
+        
+     cursor:pointer;
+    
+}
+.currency_dropdown  {
+    position:absolute;
+    list-style-type:none;
+    box-shadow: 0 5px 35px rgba(168, 172, 176, 0.19);
+    height: 20vh;
+    overflow-y: scroll;
+    cursor: pointer;
+    width: 100px;
+}
