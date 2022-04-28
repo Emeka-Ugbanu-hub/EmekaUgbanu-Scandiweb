@@ -28,7 +28,7 @@ const client = new ApolloClient({
 class App extends React.Component {
   render() {
     return (
-      <Suspense fallback={<img src={getSvg.loader} />}>
+      <Suspense fallback={<img alt="suspense_loader" src={getSvg.loader} />}>
         <ApolloProvider client={client}>
           <Provider store={store}>
             <BrowserRouter>
