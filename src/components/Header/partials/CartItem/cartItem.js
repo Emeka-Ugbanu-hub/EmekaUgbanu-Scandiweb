@@ -48,7 +48,7 @@ window.totalAmount= 0.00
             <div onClick={() => this.setState({ open: !this.state.open })}
                 ref={this.cartbuttonRef}>
               <div className="badge" style={{opacity:this.props.qty <= 0 ? 0 : 1}}>
-                <div className="badge_text" >{this.props.qty}</div>
+                <div className="badge_text" >{this.props.qty > 9 ? "9+" : this.props.qty}</div>
               </div>
               <img
                 src={getSvg.cart}
