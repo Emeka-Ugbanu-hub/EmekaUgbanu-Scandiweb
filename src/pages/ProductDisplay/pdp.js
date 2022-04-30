@@ -47,10 +47,11 @@ class PDP extends React.Component {
           <div className="pdp_container">
             <div className="image_section">
               <div className="image_column">
-                {product.gallery.map((src) => {
+                {product.gallery.map((src,index) => {
                   return (
                     <img
                       src={src}
+                      key={index}
                       alt="more_images"
                       onClick={() => this.setState({ imgsrc: src })}
                       className="img_col"
@@ -76,10 +77,10 @@ class PDP extends React.Component {
             <div className="attribute_section">
               <h1 className="product_name">{product.name}</h1>
               <h1 className="product_brand">{product.brand}</h1>
-              {product.attributes.map(({ type, name, items }) => {
+              {product.attributes.map(({ type, name, items },index) => {
                 return (
                   <>
-                    <div style={{ marginTop: `${2}rem` }}>
+                    <div style={{ marginTop: `${2}rem` }} key={index}>
                       <span className="pdp_name">{name}:</span>
                       <div style={{ marginTop: `${1}rem` }}>
                         <ProductAttribute

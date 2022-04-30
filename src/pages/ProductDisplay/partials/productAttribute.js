@@ -2,6 +2,7 @@ import React from "react";
 import { addCart } from "../../../slices/cartslice";
 import "./productAttribute.css";
 import { connect } from "react-redux";
+import getSvg from "../../../svg/getSvg";
 
 class ProductAttribute extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ProductAttribute extends React.Component {
             {this.props.item.map(({ value }, index) => {
               return (
                 <>
-                  <div>
+                  <div key={index}>
                     <div
                       className={`text_box ${
                         this.state.activeText === index ? "active_text" : ""
@@ -59,22 +60,25 @@ class ProductAttribute extends React.Component {
                     className="swatch_box"
                     style={{
                       background:
-                        this.props.activeText === 1 ? "purple" : value,
+                        value,
 
                       border:
                         value === "white" || value === "#FFFFFF"
                           ? `${1}px solid black`
                           : "none",
                     }}
+                    key={index}
                     onClick={() => this.handleClick(index)}
                   >
-                    <div
+                    <img
                       className="swatch_active"
                       style={{
                         display:
-                          this.props.activeText === index ? "block" : "none",
+                          this.state.activeText === index ? "block" : "none",
                       }}
-                    ></div>
+                      src={getSvg.check}
+                    />
+                    
                   </div>
                 </>
               );
