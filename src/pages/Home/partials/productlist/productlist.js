@@ -34,7 +34,7 @@ class ProductList extends React.Component {
     } = this.props;
 
     if (loading) {
-      return <div>Loading...</div>;
+      return <img alt="suspense_loader" src={getSvg.loader} />;
     } else {
       return (
         <>

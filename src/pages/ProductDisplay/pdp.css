@@ -65,3 +65,8 @@
     cursor: pointer;
     margin-top: 1rem;
 }
+.loader_img {
+  position: absolute;
+  left: 30%;
+   top: 30% ;
+}

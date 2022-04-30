@@ -4,11 +4,14 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import ProductAttribute from "./partials/productAttribute";
 import { addCart } from "../../slices/cartslice";
+import getSvg from "../../svg/getSvg";
+
 class PDP extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       imgsrc: "",
+      imgload:false,
     };
   }
   componentDidMount() {
@@ -33,7 +36,7 @@ class PDP extends React.Component {
     } = this.props;
 
     if (loading) {
-      return <h1>Loading...</h1>;
+      return <img alt="suspense_loader" src={getSvg.loader} />;
     } else {
       let pdpamount = product.prices.filter(
         (price) => price.currency.symbol === this.props.currency.symbol
@@ -57,10 +60,12 @@ class PDP extends React.Component {
               </div>
 
               <div>
+                {this.state.imgload ? null :  <img src={getSvg.loader} alt=""  className="loader_img"/>}
                 <img
                   src={this.state.imgsrc}
-                  alt="product_image"
+                  alt=""
                   className="pdp_image"
+                 onLoad={()=>this.setState({imgload:true})}
                   style={{ opacity: product.inStock ? 1 : 0.5 }}
                 />
                 {!product.inStock && (
