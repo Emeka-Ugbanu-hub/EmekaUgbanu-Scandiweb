@@ -16,7 +16,7 @@ const PDP = lazy(() => import("./pages/ProductDisplay/pdpgraphql"));
 const Header = lazy(() => import("./components/Header/header"));
 const Cart = lazy(() => import("./pages/Cart/Cart"));
 
-const link = from([new HttpLink({ uri:  process.env.REACT_APP_GRAPHQL_ENDPOINT })]);
+const link = from([new HttpLink({ uri:process.env.REACT_APP_GRAPHQL_ENDPOINT })]);
 
 const client = new ApolloClient({
   cache: new InMemoryCache({
