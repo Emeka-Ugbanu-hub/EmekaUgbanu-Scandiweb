@@ -11,11 +11,11 @@ class PDP extends React.Component {
     super(props);
     this.state = {
       imgsrc: "",
-      imgload:false,
+      imgload: false,
     };
   }
   componentDidMount() {
-    // here you have the id
+    // here you have the id to query
     const id = this.props.match.params.productId;
     this.props.data.refetch({ pdpid: id });
     setTimeout(() => {
@@ -47,7 +47,7 @@ class PDP extends React.Component {
           <div className="pdp_container">
             <div className="image_section">
               <div className="image_column">
-                {product.gallery.map((src,index) => {
+                {product.gallery.map((src, index) => {
                   return (
                     <img
                       src={src}
@@ -61,12 +61,15 @@ class PDP extends React.Component {
               </div>
 
               <div>
-                {this.state.imgload ? null :  <img src={getSvg.loader} alt=""  className="loader_img"/>}
+                {/*toast*/}
+                {this.state.imgload ? null : (
+                  <img src={getSvg.loader} alt="" className="loader_img" />
+                )}
                 <img
                   src={this.state.imgsrc}
                   alt=""
                   className="pdp_image"
-                 onLoad={()=>this.setState({imgload:true})}
+                  onLoad={() => this.setState({ imgload: true })}
                   style={{ opacity: product.inStock ? 1 : 0.5 }}
                 />
                 {!product.inStock && (
@@ -77,7 +80,7 @@ class PDP extends React.Component {
             <div className="attribute_section">
               <h1 className="product_name">{product.name}</h1>
               <h1 className="product_brand">{product.brand}</h1>
-              {product.attributes.map(({ type, name, items },index) => {
+              {product.attributes.map(({ type, name, items }, index) => {
                 return (
                   <>
                     <div style={{ marginTop: `${2}rem` }} key={index}>

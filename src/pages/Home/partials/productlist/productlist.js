@@ -64,6 +64,7 @@ class ProductList extends React.Component {
                 },
                 index
               ) => {
+                /*filter function to get amount*/
                 let getAmount = prices.filter(
                   (price) =>
                     price.currency.symbol === this.props.currency.symbol

@@ -10,7 +10,7 @@ class CurrencySwitch extends React.Component {
     this.state = {
       isActive: false,
     };
-
+/*ref instances*/
     this.menuRef = React.createRef();
     this.buttonRef = React.createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);

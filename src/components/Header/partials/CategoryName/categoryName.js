@@ -25,7 +25,7 @@ class CategoryName extends React.Component {
     } = this.props;
 
     if (loading) {
-      return <img alt="suspense_loader" src={getSvg.loader} />
+      return <img alt="suspense_loader" src={getSvg.loader} />;
     } else {
       return categories.map(({ name }, index) => (
         <Link

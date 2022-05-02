@@ -5,8 +5,6 @@ const cartSlice = createSlice({
   initialState: {
     value: [],
     filt: [],
-    geto: 0,
-    amount: [],
     pdpinfo: [],
     attrid: 0,
     cartQuantity: 0,
@@ -22,7 +20,7 @@ const cartSlice = createSlice({
         img: action.payload.image,
         id: action.payload.index,
         attributes: action.payload.attributes,
-        attributeName: state.attrid,
+        attributeName: action.payload.textindex,
         prices: action.payload.prices,
       });
 
@@ -31,13 +29,15 @@ const cartSlice = createSlice({
       });
 
       var result = state.value.reduce((unique, o) => {
-        if (o.name === undefined) {
-        } else if (
+        if (o.name) {
+          //push to array but don't push a duplicate
+         if (
           !unique.some(
             (obj) =>
               obj.name === o.name && obj.attributeName === o.attributeName
           )
         ) {
+          //add quantity if name or textindex is the same
           if (
             (o.attributeName === action.payload.textindex &&
               o.name === action.payload.id) ||
@@ -45,7 +45,9 @@ const cartSlice = createSlice({
               o.name === action.payload.quanincrename)
           ) {
             o.quantity++;
-          } else if (
+          } 
+          //reduce quantity onclick
+           if (
             o.attributeName === action.payload.quandecre &&
             o.name === action.payload.quandecrename
           ) {
@@ -57,8 +59,9 @@ const cartSlice = createSlice({
 
           unique.push(o);
         }
-
-        const pos = unique.findIndex((el) => el.quantity <= 0);
+      }
+      //remove from array if quantity = 0
+        const pos = unique.findIndex((el) => el.quantity === 0);
         if (pos >= 0) unique.splice(pos, 1);
 
         return unique;

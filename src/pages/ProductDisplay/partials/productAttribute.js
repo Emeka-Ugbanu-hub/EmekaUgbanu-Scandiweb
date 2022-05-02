@@ -76,6 +76,7 @@ class ProductAttribute extends React.Component {
                         display:
                           this.state.activeText === index ? "block" : "none",
                       }}
+                      alt=""
                       src={getSvg.check}
                     />
                     

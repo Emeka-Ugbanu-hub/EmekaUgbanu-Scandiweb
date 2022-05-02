@@ -18,7 +18,7 @@ class Header extends React.Component {
           background: "#fff",
         }}
       >
-        {/* */}
+        {/* category name grid*/}
 
         <div style={{ marginLeft: `${2}rem` }}>
           <div
