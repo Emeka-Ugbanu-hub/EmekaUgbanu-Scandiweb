@@ -150,7 +150,7 @@ class CartItem extends React.Component {
                                 this.props.dispatch(
                                   addCart({
                                     quanincre,
-                                    
+                                    textindex,
                                     quanincrename,
                                   })
                                 )
@@ -164,7 +164,7 @@ class CartItem extends React.Component {
                                 this.props.dispatch(
                                   addCart({
                                     quandecre,
-
+textindex,
                                     quandecrename,
                                   })
                                 )

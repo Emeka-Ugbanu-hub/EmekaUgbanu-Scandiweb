@@ -31,36 +31,36 @@ const cartSlice = createSlice({
       var result = state.value.reduce((unique, o) => {
         if (o.name) {
           //push to array but don't push a duplicate
-         if (
-          !unique.some(
-            (obj) =>
-              obj.name === o.name && obj.attributeName === o.attributeName
-          )
-        ) {
-          //add quantity if name or textindex is the same
           if (
-            (o.attributeName === action.payload.textindex &&
-              o.name === action.payload.id) ||
-            (o.attributeName === action.payload.quanincre &&
-              o.name === action.payload.quanincrename)
+            !unique.some(
+              (obj) =>
+                obj.name === o.name && obj.attributeName === o.attributeName
+            )
           ) {
-            o.quantity++;
-          } 
-          //reduce quantity onclick
-           if (
-            o.attributeName === action.payload.quandecre &&
-            o.name === action.payload.quandecrename
-          ) {
-            o.quantity -= 1;
-            if (o.quantity <= 0) {
-              o.quantity = 0;
+            //add quantity if name or textindex is the same
+            if (
+              (o.attributeName === action.payload.textindex &&
+                o.name === action.payload.id) ||
+              (o.attributeName === action.payload.quanincre &&
+                o.name === action.payload.quanincrename)
+            ) {
+              o.quantity++;
             }
-          }
+            //reduce quantity onclick
+            if (
+              o.attributeName === action.payload.quandecre &&
+              o.name === action.payload.quandecrename
+            ) {
+              o.quantity -= 1;
+              if (o.quantity <= 0) {
+                o.quantity = 0;
+              }
+            }
 
-          unique.push(o);
+            unique.push(o);
+          }
         }
-      }
-      //remove from array if quantity = 0
+        //remove from array if quantity = 0
         const pos = unique.findIndex((el) => el.quantity === 0);
         if (pos >= 0) unique.splice(pos, 1);
 

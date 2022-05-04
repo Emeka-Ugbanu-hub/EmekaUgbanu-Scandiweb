@@ -59,8 +59,7 @@ class ProductAttribute extends React.Component {
                   <div
                     className="swatch_box"
                     style={{
-                      background:
-                        value,
+                      background: value,
 
                       border:
                         value === "white" || value === "#FFFFFF"
@@ -79,7 +78,6 @@ class ProductAttribute extends React.Component {
                       alt=""
                       src={getSvg.check}
                     />
-                    
                   </div>
                 </>
               );
