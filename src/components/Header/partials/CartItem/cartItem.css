@@ -5,6 +5,7 @@
   height: 25px;
   width: 25px;
 }
+
 .overlay {
   position: fixed;
   z-index: 9999;
@@ -24,40 +25,45 @@
   right: 0;
   padding-bottom: 20px;
   padding-left: 10px;
-
- 
 }
+
 .bold_text {
   font-weight: 700;
 }
+
 .cart_name {
   font-weight: 600;
   font-size: 16px;
   line-height: 27px;
   margin: 0px 0px 16px;
 }
+
 .cart_brand {
   font-weight: 400;
   font-size: 16px;
   line-height: 27px;
   margin: 0px 0px 12px;
 }
+
 .cart_amount {
   font-size: 16px;
   font-weight: 700;
   line-height: 18px;
   margin: 0px 0px 12px;
 }
+
 .cartItem_Container {
   display: grid;
   grid-template-columns: 50% 10% 40%;
   margin-top: 1rem;
 }
+
 .cart_image {
   width: 105px;
   height: 137px;
   float: right;
 }
+
 .cart_button_one {
   width: 150px;
   height: 50px;
@@ -67,6 +73,7 @@
   margin-left: 3rem;
   cursor: pointer;
 }
+
 .cart_button_two {
   width: 150px;
   height: 50px;
@@ -76,6 +83,7 @@
   margin-left: 1rem;
   cursor: pointer;
 }
+
 .badge {
   position: absolute;
   text-align: center;
@@ -85,16 +93,43 @@
   right: 3rem;
   z-index: 1;
   border-radius: 60px;
-  background: #1D1F22;
+  background: #1d1f22;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
+
 .badge_text {
   font-size: 12px;
   font-weight: 700;
   line-height: 16px;
   letter-spacing: 0em;
+}
+
+@media screen and (max-width: 480px) {
+  .mini_cart {
+    right: 0rem;
+    width: 80%;
+  }
+
+  .cart_button_one {
+    width: 100px;
+    height: 50px;
+  }
+
+  .cart_button_two {
+    width: 100px;
+    height: 50px;
+  }
+
+  .cart {
+    margin-top: 5rem;
+  }
+
+  .badge {
+    top: 4.5rem;
+    right: 0.8rem;
+  }
 }

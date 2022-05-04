@@ -131,13 +131,7 @@ class Cart extends React.Component {
           }
         )}
         <div
-          style={{
-            marginTop: `${1}rem`,
-            marginLeft: `${3.5}rem`,
-            fontSize: `${1.8}rem`,
-            fontWeight: 700,
-            width: `${90}%`,
-          }}
+          className="cartpage_total"
         >
           <span>Total:</span>
           <span style={{ float: "right" }}>

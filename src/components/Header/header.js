@@ -3,31 +3,18 @@ import getSvg from "../../svg/getSvg";
 import CategoryName from "./partials/CategoryName/CategoryNameGraphql";
 import Currencyswitch from "./partials/CurrencySwitch/currenySwitchGraphql";
 import CartItem from "./partials/CartItem/cartItem";
+import "./header.css"
 class Header extends React.Component {
   render() {
     return (
       <div
-        style={{
-          width: `${100}%`,
-          height: `${10}vh`,
-          display: "grid",
-          gridTemplateColumns: `${20}% ${65}% ${15}%`,
-          position: "sticky",
-          top: 0,
-          zIndex: 10,
-          background: "#fff",
-        }}
+        className="header_container"
       >
         {/* category name grid*/}
 
         <div style={{ marginLeft: `${2}rem` }}>
           <div
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              fontSize: `${0.8}rem`,
-              marginTop: `${1}rem`,
-            }}
+           className="categoryname"
           >
             <CategoryName />
           </div>
@@ -38,7 +25,7 @@ class Header extends React.Component {
           <img
             src={getSvg.logo}
             alt="logo"
-            style={{ margin: `${1}rem 0 0 ${50}%` }}
+            className="header_logo"
           />
         </div>
 

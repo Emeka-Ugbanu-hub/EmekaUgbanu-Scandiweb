@@ -70,3 +70,24 @@
   left: 30%;
    top: 30% ;
 }
+
+@media screen and (max-width: 480px) {
+.pdp_container {
+  display: flex;
+  flex-direction: column;
+}
+.image_section {
+  margin: 0 0 0 0;
+}
+.image_column{
+  display: none;
+}
+.pdp_image {
+  max-width: 250;
+  max-height: 250px;
+  
+}
+.attribute_section{
+  margin-left: 2rem;
+}
+}

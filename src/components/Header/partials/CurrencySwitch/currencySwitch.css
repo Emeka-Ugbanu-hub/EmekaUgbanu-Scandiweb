@@ -13,4 +13,14 @@
     overflow-y: scroll;
     cursor: pointer;
     width: 100px;
+    background: #fff;
+}
+.currency_switch_container{
+margin-top: 0;
+}
+@media screen and (max-width: 480px) {
+.currency_switch_container {
+margin-top: 4rem;
+margin-left: 8rem;
+}
 }

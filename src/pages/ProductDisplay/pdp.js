@@ -12,6 +12,7 @@ class PDP extends React.Component {
     this.state = {
       imgsrc: "",
       imgload: false,
+      toast:false,
     };
   }
   componentDidMount() {
@@ -24,7 +25,10 @@ class PDP extends React.Component {
   }
   handleClick(id, brand, image, attributes, prices) {
     const textindex = this.props.attrop;
-
+    this.setState({toast:true})
+    setTimeout(() => {
+      this.setState({toast:false})
+  }, 3000);
     this.props.dispatch(
       addCart({ id, brand, image, attributes, textindex, prices })
     );
@@ -45,6 +49,7 @@ class PDP extends React.Component {
       return (
         <>
           <div className="pdp_container">
+          {this.state.toast? <div className="toast">Item added to cart!</div> : null}
             <div className="image_section">
               <div className="image_column">
                 {product.gallery.map((src, index) => {
