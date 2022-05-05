@@ -12,7 +12,7 @@ class Header extends React.Component {
       >
         {/* category name grid*/}
 
-        <div style={{ marginLeft: `${2}rem` }}>
+        <div style={{ marginLeft: `${2}rem` ,background:"#fff"}}>
           <div
            className="categoryname"
           >
@@ -21,7 +21,7 @@ class Header extends React.Component {
         </div>
 
         {/*Logo Grid */}
-        <div>
+        <div style={{background:"#fff"}}>
           <img
             src={getSvg.logo}
             alt="logo"
@@ -30,7 +30,7 @@ class Header extends React.Component {
         </div>
 
         {/*Cart Grid */}
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex",background:"#fff" }}>
           <Currencyswitch />
           <CartItem />
         </div>
