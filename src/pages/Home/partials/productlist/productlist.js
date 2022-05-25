@@ -10,8 +10,8 @@ class ProductList extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
-      toast:false,
-    }
+      toast: false,
+    };
   }
 
   componentDidMount() {
@@ -29,10 +29,10 @@ class ProductList extends React.Component {
     this.props.dispatch(
       addCart({ id, brand, image, attributes, textindex, prices })
     );
-    this.setState({toast:true})
+    this.setState({ toast: true });
     setTimeout(() => {
-      this.setState({toast:false})
-  }, 3000);
+      this.setState({ toast: false });
+    }, 3000);
   }
 
   render() {
@@ -49,7 +49,9 @@ class ProductList extends React.Component {
             {this.props.activeCategory.toUpperCase()}
           </div>
           <div className="product_container">
-         {this.state.toast? <div className="toast">Item added to cart!</div> : null}
+            {this.state.toast ? (
+              <div className="toast">Item added to cart!</div>
+            ) : null}
             {category.products.map(
               (
                 {
@@ -88,7 +90,7 @@ class ProductList extends React.Component {
                           this.handleClick(
                             name,
                             brand,
-                            image,
+                            gallery,
                             attributes,
                             prices
                           )

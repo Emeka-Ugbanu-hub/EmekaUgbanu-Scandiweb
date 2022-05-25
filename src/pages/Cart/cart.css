@@ -13,12 +13,14 @@
   font-size: 2rem;
   line-height: 27px;
   margin: 0px 0px 16px;
+  font-family: Raleway;
 }
 .cartpage_brand {
   font-weight: 400;
   font-size: 1.8rem;
   line-height: 27px;
   margin: 0px 0px 12px;
+  font-family: Raleway;
 }
 .cartpage_amount {
   font-size: 1.3rem;
@@ -37,11 +39,77 @@
   margin-top: 1rem;
 }
 .cartpage_total {
-  margin-top: 1rem;
+  margin-top: 4rem;
   margin-left: 3.5rem;
   font-size: 1.8rem;
-  font-weight: 700;
+  height: 60vh;
+}
+.cartpageheader_name {
+  font-size: 2.3rem;
+  font-weight: 600;
+  margin: 1em 0 0 2em;
+}
+
+.cartpage_hr {
   width: 90%;
+  opacity: 0.3;
+  margin-top: 4rem;
+}
+.cartpage_innerCon {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  height: 60px;
+}
+.cartpage_downCon {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.cartpage_quantityContainer {
+  margin-right: 4rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+.tax_span {
+  display: block;
+  margin-top: 1rem;
+}
+.quantity_span {
+  display: block;
+  margin-top: 1rem;
+}
+.total_span {
+  display: block;
+  margin-top: 1rem;
+}
+.order_button {
+  background: #5ece7b;
+  border: none;
+  margin-top: 2rem;
+  color: #fff;
+  display: block;
+  width: 300px;
+  height: 60px;
+  cursor: pointer;
+}
+.carret_button {
+  width: 34px;
+  height: 34px;
+   background: #000000BA;
+   color:#fff;
+   font-weight: 600;
+   font-family: Raleway;
+   cursor: pointer;
+   margin-left: 1rem;
+   border: none;
+   font-size: 1rem;
+}
+.carret_button_container {
+  position: relative;
+  bottom: 3rem;
+  left: 6rem;
 }
 @media screen and (max-width: 480px) {
   .cartPage_Container {

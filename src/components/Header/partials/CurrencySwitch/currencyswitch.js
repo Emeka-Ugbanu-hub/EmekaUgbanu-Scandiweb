@@ -10,7 +10,7 @@ class CurrencySwitch extends React.Component {
     this.state = {
       isActive: false,
     };
-/*ref instances*/
+    /*ref instances*/
     this.menuRef = React.createRef();
     this.buttonRef = React.createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -37,7 +37,7 @@ class CurrencySwitch extends React.Component {
       data: { currencies, loading },
     } = this.props;
     if (loading) {
-      return <img alt="suspense_loader" src={getSvg.loader} />;
+      return null
     } else {
       return (
         <>
@@ -75,11 +75,12 @@ class CurrencySwitch extends React.Component {
             >
               {currencies.map(({ label, symbol }, index) => (
                 <li
-                  style={{ margin: `${10}px ${25}px 0 0` }}
+                  className="currency_list"
                   key={index}
-                  onClick={() =>
-                    this.props.dispatch(currencySwitcher({ symbol, label }))
-                  }
+                  onClick={() => {
+                    this.props.dispatch(currencySwitcher({ symbol, label }));
+                    this.setState({ isActive: false });
+                  }}
                 >
                   {symbol} {label}
                 </li>

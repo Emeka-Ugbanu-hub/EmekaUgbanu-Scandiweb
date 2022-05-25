@@ -1,6 +1,6 @@
 import { graphql } from "@apollo/client/react/hoc";
 import { gql } from "@apollo/client";
-import Productlist from "./productlist";
+import Productlist from "../pages/Home/partials/productlist/productlist";
 
 export default graphql(
   gql`

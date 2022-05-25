@@ -12,7 +12,7 @@ class PDP extends React.Component {
     this.state = {
       imgsrc: "",
       imgload: false,
-      toast:false,
+      toast: false,
     };
   }
   componentDidMount() {
@@ -25,15 +25,19 @@ class PDP extends React.Component {
   }
   handleClick(id, brand, image, attributes, prices) {
     const textindex = this.props.attrop;
-    this.setState({toast:true})
+    this.setState({ toast: true });
     setTimeout(() => {
-      this.setState({toast:false})
-  }, 3000);
+      this.setState({ toast: false });
+    }, 3000);
     this.props.dispatch(
       addCart({ id, brand, image, attributes, textindex, prices })
     );
   }
-
+  unescapeHTML(html) {
+    var escapeEl = document.createElement("p");
+    escapeEl.innerHTML = html;
+    return escapeEl.textContent;
+  }
   render() {
     const {
       data: { product, loading },
@@ -49,7 +53,9 @@ class PDP extends React.Component {
       return (
         <>
           <div className="pdp_container">
-          {this.state.toast? <div className="toast">Item added to cart!</div> : null}
+            {this.state.toast ? (
+              <div className="toast">Item added to cart!</div>
+            ) : null}
             <div className="image_section">
               <div className="image_column">
                 {product.gallery.map((src, index) => {
@@ -88,7 +94,7 @@ class PDP extends React.Component {
               {product.attributes.map(({ type, name, items }, index) => {
                 return (
                   <>
-                    <div style={{ marginTop: `${2}rem` }} key={index}>
+                    <div className="pdp_innerCon" key={index}>
                       <span className="pdp_name">{name}:</span>
                       <div style={{ marginTop: `${1}rem` }}>
                         <ProductAttribute
@@ -102,17 +108,9 @@ class PDP extends React.Component {
                   </>
                 );
               })}
-              <div style={{ marginTop: `${3}rem` }}>
-                <span style={{ fontSize: `${1.2}rem`, fontWeight: 600 }}>
-                  Price:
-                </span>
-                <span
-                  style={{
-                    fontSize: `${1.5}rem`,
-                    fontWeight: 700,
-                    display: "block",
-                  }}
-                >
+              <div className="pdp_down">
+                <span className="pdp_price">Price:</span>
+                <span className="pdp_amount">
                   {this.props.currency.symbol}
                   {pdpamount.amount}
                 </span>
@@ -126,7 +124,7 @@ class PDP extends React.Component {
                   this.handleClick(
                     product.name,
                     product.brand,
-                    product.gallery[0],
+                    product.gallery,
                     product.attributes,
                     product.prices
                   )
@@ -135,7 +133,7 @@ class PDP extends React.Component {
                 Add to cart!
               </button>
 
-              <p dangerouslySetInnerHTML={{ __html: product.description }} />
+              {this.unescapeHTML(product.description)}
             </div>
           </div>
         </>

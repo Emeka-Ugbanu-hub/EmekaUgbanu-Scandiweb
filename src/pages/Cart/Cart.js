@@ -5,21 +5,31 @@ import ProductAttribute from "../ProductDisplay/partials/productAttribute";
 import "./cart.css";
 
 class Cart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      carousel: 0,
+    };
+    this.handleCarouselClick = this.handleCarouselClick.bind(this);
+  }
+
+  handleCarouselClick(type) {
+    this.setState((prevState) => {
+      return {
+        carousel:
+          type === "add" ? prevState.carousel + 1 : prevState.carousel - 1,
+      };
+    });
+  }
+
   render() {
     /*create global variabe*/
     window.cartPageTotal = [];
     window.cartPageAmount = 0.0;
+
     return (
       <>
-        <div
-          style={{
-            fontSize: `${2.3}rem`,
-            fontWeight: 600,
-            margin: `${1}em 0 0 ${2}em`,
-          }}
-        >
-          CART
-        </div>
+        <div className="cartpageheader_name">CART</div>
 
         {this.props.cartfil.map(
           ({
@@ -48,13 +58,7 @@ class Cart extends React.Component {
 
             return (
               <>
-                <hr
-                  style={{
-                    width: `${90}%`,
-                    opacity: 0.3,
-                    marginTop: `${4}rem`,
-                  }}
-                />
+                <hr className="cartpage_hr" />
                 <div className="cartPage_Container">
                   <div>
                     <h2 className="cartpage_name">{name}</h2>
@@ -65,30 +69,17 @@ class Cart extends React.Component {
                     </h4>
                     {attributes?.map(({ type, name, items }) => (
                       <>
-                        <div
-                          style={{
-                            position: "absolute",
-                            zIndex: 1,
-                            width: `${50}%`,
-                            height: `${60}px`,
-                          }}
-                        ></div>
+                        <div className="cartpage_innerCon"></div>
                         <ProductAttribute
                           name={name}
                           item={items}
                           type={type}
-                          work={attributeName}
+                          initial={attributeName}
                         />
                       </>
                     ))}
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      textAlign: "center",
-                    }}
-                  >
+                  <div className="cartpage_downCon">
                     <button
                       className="cartpage_quantityupdate"
                       onClick={() =>
@@ -97,14 +88,7 @@ class Cart extends React.Component {
                     >
                       +
                     </button>
-                    <span
-                      style={{
-                        marginRight: `${4}rem`,
-                        marginTop: `${1}rem`,
-                        fontWeight: 600,
-                        fontSize: `${1.3}rem`,
-                      }}
-                    >
+                    <span className="cartpage_quantityContainer">
                       {quantity}
                     </span>
                     <button
@@ -120,24 +104,51 @@ class Cart extends React.Component {
                   </div>
                   <div>
                     <img
-                      src={img}
+                      src={img[this.state.carousel]}
                       alt="cart_image"
                       className="cartpage_image"
                     />
+                    <div className="carret_button_container">
+                      <button
+                       className="carret_button"
+                        style={{
+                          visibility:
+                            this.state.carousel <= 0 ? "hidden" : "visible",
+                        }}
+                        onClick={() => this.handleCarouselClick("sub")}
+                      >
+                        {"<"}
+                      </button>
+                      <button
+                      className="carret_button"
+                        style={{
+                          visibility:
+                            this.state.carousel === img.length - 1
+                              ? "hidden"
+                              : "visible",
+                        }}
+                        onClick={() => this.handleCarouselClick("add")}
+                      >
+                        {">"}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </>
             );
           }
         )}
-        <div
-          className="cartpage_total"
-        >
-          <span>Total:</span>
-          <span style={{ float: "right" }}>
-            {this.props.currency.symbol}
+
+        <div className="cartpage_total">
+          <span className="tax_span">
+            Tax 21%:{((21 / 100) * window.cartPageAmount).toFixed(2)}
+          </span>
+          <span className="quantity_span">Quantity:{this.props.qty}</span>
+          <span className="total_span">
+            Total:{this.props.currency.symbol}
             {window.cartPageAmount}
           </span>
+          <button className="order_button">ORDER</button>
         </div>
       </>
     );

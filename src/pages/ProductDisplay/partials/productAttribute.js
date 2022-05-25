@@ -2,7 +2,6 @@ import React from "react";
 import { addCart } from "../../../slices/cartslice";
 import "./productAttribute.css";
 import { connect } from "react-redux";
-import getSvg from "../../../svg/getSvg";
 
 class ProductAttribute extends React.Component {
   constructor(props) {
@@ -28,7 +27,8 @@ class ProductAttribute extends React.Component {
     if (this.props.type === "text") {
       return (
         <>
-          <div style={{ display: "flex" }}>
+          <span>{this.props.name}:</span>
+          <div className="container">
             {this.props.item.map(({ value }, index) => {
               return (
                 <>
@@ -52,7 +52,8 @@ class ProductAttribute extends React.Component {
     if (this.props.type === "swatch")
       return (
         <>
-          <div style={{ display: "flex" }}>
+          <span>{this.props.name}:</span>
+          <div className="container">
             {this.props.item.map(({ value }, index) => {
               return (
                 <>
@@ -65,20 +66,15 @@ class ProductAttribute extends React.Component {
                         value === "white" || value === "#FFFFFF"
                           ? `${1}px solid black`
                           : "none",
+                      outlineStyle: "solid",
+                      outlineColor:
+                        this.state.activeText === index ? "#5ECE7B" : "#fff",
+                      outlineOffset: `${2}px`,
+                      outlineWidth: `${2}px`,
                     }}
                     key={index}
                     onClick={() => this.handleClick(index)}
-                  >
-                    <img
-                      className="swatch_active"
-                      style={{
-                        display:
-                          this.state.activeText === index ? "block" : "none",
-                      }}
-                      alt=""
-                      src={getSvg.check}
-                    />
-                  </div>
+                  ></div>
                 </>
               );
             })}

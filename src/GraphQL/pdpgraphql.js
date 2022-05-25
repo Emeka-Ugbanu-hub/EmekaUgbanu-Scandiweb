@@ -1,6 +1,6 @@
 import { graphql } from "@apollo/client/react/hoc";
 import { gql } from "@apollo/client";
-import PDP from "./pdp";
+import PDP from "../pages/ProductDisplay/pdp";
 
 export default graphql(
   gql`

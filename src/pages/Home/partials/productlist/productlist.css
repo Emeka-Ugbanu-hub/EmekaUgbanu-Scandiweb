@@ -1,12 +1,14 @@
 .product_container {
   cursor: pointer;
-  display: grid;
-  grid-template-columns: 30% 35% 30%;
-  width: 95%;
-  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  font-size: 18px;
   text-align: left;
   padding: 20px;
-  margin: -20px 20px 80px 60px;
+  margin: 0 auto;
 }
 .image_container {
   position: relative;
@@ -23,10 +25,12 @@
 .product_name {
   font-weight: 300;
   padding-top: 20px;
+  font-family: Raleway;
 }
 .item_container {
-  margin: 20px 40px 0 0;
   padding: 20px;
+  width: 30%;
+  border-radius: 3px;
 }
 
 .addto_cart {
@@ -61,6 +65,7 @@
 }
 .category_Name {
    font-size: 2.6rem; 
+   font-family: Raleway;
    margin: 1em 0 0 2em;
 }
 .toast {

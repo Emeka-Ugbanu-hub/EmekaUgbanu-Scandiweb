@@ -17,6 +17,7 @@ class CartItem extends React.Component {
     this.minicartRef = React.createRef();
     this.cartbuttonRef = React.createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleCartClick = this.handleCartClick.bind(this);
   }
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClickOutside);
@@ -25,14 +26,26 @@ class CartItem extends React.Component {
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
+
   handleClickOutside(event) {
+  
     if (this.minicartRef.current && this.cartbuttonRef.current) {
       if (
         !this.minicartRef.current.contains(event.target) &&
         !this.cartbuttonRef.current.contains(event.target)
       ) {
         this.setState({ open: false });
+        document.body.style.overflow = "scroll";
       }
+    }
+  }
+  handleCartClick() {
+    this.setState({ open: !this.state.open });
+    if(this.state.open === false){
+      document.body.style.overflow = "hidden";
+    }
+    else {
+      document.body.style.overflow = "scroll";
     }
   }
 
@@ -44,7 +57,8 @@ class CartItem extends React.Component {
       <>
         <div>
           <div
-            onClick={() => this.setState({ open: !this.state.open })}
+            className="shop_cart"
+            onClick={this.handleCartClick}
             ref={this.cartbuttonRef}
           >
             <div
@@ -67,15 +81,7 @@ class CartItem extends React.Component {
                 {this.props.cartfil.length} item(s)
               </p>
 
-              <div
-                style={{
-                  overflowY: "scroll",
-                  width: `${100}%`,
-                  height: "fit-content",
-                  maxHeight: `${50}vh`,
-                  position: "relative",
-                }}
-              >
+              <div className="cartItem_maxcontainer">
                 {this.props.cartfil.map(
                   ({
                     name,
@@ -102,7 +108,6 @@ class CartItem extends React.Component {
                     0);
                     window.totalAmount = cartTotAmount.toFixed(2);
 
-
                     const quanincre = attributeName;
                     const quandecre = attributeName;
                     const quanincrename = name;
@@ -121,14 +126,7 @@ class CartItem extends React.Component {
                             </h4>
                             {attributes?.map(({ type, name, items }) => (
                               <>
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    zIndex: 1,
-                                    width: `${50}%`,
-                                    height: `${60}px`,
-                                  }}
-                                ></div>
+                                <div className="cartItem_innerContainer"></div>
                                 <ProductAttribute
                                   name={name}
                                   item={items}
@@ -138,14 +136,9 @@ class CartItem extends React.Component {
                               </>
                             ))}
                           </div>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                              textAlign: "center",
-                            }}
-                          >
+                          <div className="item_count_container">
                             <button
+                              className="item_count"
                               onClick={() =>
                                 this.props.dispatch(
                                   addCart({
@@ -158,13 +151,14 @@ class CartItem extends React.Component {
                             >
                               +
                             </button>
-                            <span>{quantity}</span>
+                            <div className="item_quantity">{quantity}</div>
                             <button
+                              className="item_count"
                               onClick={() =>
                                 this.props.dispatch(
                                   addCart({
                                     quandecre,
-textindex,
+                                    textindex,
                                     quandecrename,
                                   })
                                 )
@@ -175,7 +169,7 @@ textindex,
                           </div>
                           <div>
                             <img
-                              src={img}
+                              src={img[0]}
                               alt="cart_image"
                               className="cart_image"
                             />
@@ -186,25 +180,16 @@ textindex,
                   }
                 )}
               </div>
-              <div style={{ marginTop: `${1}rem`, fontSize: `${1.1}rem` }}>
+              <div className="cartItem_totalCon">
                 <span>Total:</span>
-                <span
-                  style={{
-                    float: "right",
-                    marginRight: `${1}rem`,
-                    fontWeight: 700,
-                  }}
-                >
+                <span className="cartItem_amount">
                   {this.props.currency.symbol}
                   {window.totalAmount}
                 </span>
               </div>
-              <div style={{ marginTop: `${1}rem` }}>
+              <div className="cartItem_button">
                 <button className="cart_button_one">
-                  <Link
-                    to={"/cart"}
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
+                  <Link to={"/cart"} className="cartItem_link">
                     VIEW BAG
                   </Link>
                 </button>

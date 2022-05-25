@@ -1,14 +1,14 @@
 import React from "react";
-import ProductList from "./partials/productlist/productListGraphql"
+import ProductList from "../../GraphQL/productListGraphql";
+
 class Home extends React.Component {
-    render() {
-        
-return (
-    <>
-<ProductList/>
-    </>
-)
-    }
+  render() {
+    return (
+      <>
+        <ProductList />
+      </>
+    );
+  }
 }
 
-export default Home
+export default Home;
